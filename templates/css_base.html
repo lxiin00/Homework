@@ -1,0 +1,22 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+
+{% block main %}
+{% endblock %}
+
+<footer class="footer">
+    <div class="container text-center">
+        <span class="text-muted">Power By XXX</span>
+    </div>
+</footer>
+
+</body>
+</html>

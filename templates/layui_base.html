@@ -1,0 +1,106 @@
+{% load staticfiles %}
+<link rel="stylesheet" href="{% static 'layui/css/layui.css' %}">
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>{% block title %}作业管理系统{% endblock %}</title>
+</head>
+<body class="layui-layout-body" xmlns="http://www.w3.org/1999/html">
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header">
+            <div class="layui-logo">作业管理系统</div>
+            <ul class="layui-nav layui-layout-left">
+                <li class="layui-nav-item">
+                    <div class="layui-form component" lay-filter="LAY-site-header-component" style="width: 250px;">
+                        <input type="text" placeholder="搜索" class="layui-input">
+                    </div>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="#">课程</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="#">社区</a>
+                </li>
+            </ul>
+            <ul class="layui-nav layui-layout-right">
+                <li class="layui-nav-item">
+                    <a href="javascript:;">
+                        {{ user.username }}
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="{% url 'userinfo' user.id %}">个人资料</a> </dd>
+                        <dd><a href="{% url 'changeinfo' user.id %}">完善资料</a> </dd>
+                        <dd><a href="{% url 'changepwd' user.id %}">修改密码</a> </dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="{% url 'logout' %}">退出登录</a>
+                </li>
+            </ul>
+        </div>
+        <div class="layui-side layui-bg-black">
+            <div class="layui-side-scroll">
+                <ul class="layui-nav layui-nav-tree">
+                    <li class="layui-nav-item layui-nav-itemed">
+                        <a href="{% url 'index' %}">
+                            首页
+                        </a>
+                    </li>
+                    <li class="layui-nav-item layui-nav-itemed">
+                        <a href="javascript:;">
+                            课程信息
+                            <span class="layui-nav-more"></span>
+                        </a>
+                        <dl class="layui-nav-child">
+                            <dd>
+                                <a href="#">我的课程</a>
+                            </dd>
+                            <dd>
+                                <a href="#">所有课程</a>
+                            </dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item layui-nav-itemed">
+                        <a href="javascript:;">
+                            个人信息
+                            <span class="layui-nav-more"></span>
+                        </a>
+                        <dl class="layui-nav-child">
+                            <dd>
+                                <a href="{% url 'userinfo' user.id %}">个人资料</a>
+                            </dd>
+                            <dd>
+                                <a href="{% url 'changeinfo' user.id %}">更改资料</a>
+                            </dd>
+                            <dd>
+                                <a href="{% url 'changepwd' user.id %}">修改密码</a>
+                            </dd>
+                            <dd>
+                                <a href="{% url 'logout' %}">退出</a>
+                            </dd>
+                        </dl>
+                    </li>
+                </ul>
+            </div>
+        </div>
+{% block main %}
+{% endblock %}
+        <div class="layui-footer">
+            <div class="layui-main" style="text-align: center">
+                <p>© 2019 Power by Lxiin</p>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="{% static 'layui/layui.js' %}"></script>
+<script>
+//JavaScript代码区域
+layui.use('element', function(){
+  var element = layui.element;
+
+});
+</script>
+</html>
